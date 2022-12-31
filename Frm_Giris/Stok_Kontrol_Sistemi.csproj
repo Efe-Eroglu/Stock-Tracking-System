@@ -1,0 +1,374 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{638BF49D-3FBB-44FE-B063-8B33F59CD765}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Frm_Giris</RootNamespace>
+    <AssemblyName>Frm_Giris</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Acilis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Acilis.Designer.cs">
+      <DependentUpon>Frm_Acilis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_AdminGiris.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_AdminGiris.Designer.cs">
+      <DependentUpon>Frm_AdminGiris.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_AdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_AdminPanel.Designer.cs">
+      <DependentUpon>Frm_AdminPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_AnaSayfa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_AnaSayfa.Designer.cs">
+      <DependentUpon>Frm_AnaSayfa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_BilgiGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_BilgiGuncelle.Designer.cs">
+      <DependentUpon>Frm_BilgiGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Hakkimizda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Hakkimizda.Designer.cs">
+      <DependentUpon>Frm_Hakkimizda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_HataGonderimi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_HataGonderimi.Designer.cs">
+      <DependentUpon>Frm_HataGonderimi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_HesabımıSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_HesabımıSil.Designer.cs">
+      <DependentUpon>Frm_HesabımıSil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_KullaniciSil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_KullaniciSil.Designer.cs">
+      <DependentUpon>Frm_KullaniciSil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_OneriOku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_OneriOku.Designer.cs">
+      <DependentUpon>Frm_OneriOku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Rapor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Rapor.Designer.cs">
+      <DependentUpon>Frm_Rapor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_SikayetOku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_SikayetOku.Designer.cs">
+      <DependentUpon>Frm_SikayetOku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Sozlesme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Sozlesme.Designer.cs">
+      <DependentUpon>Frm_Sozlesme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_StokGoruntule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_StokGoruntule.Designer.cs">
+      <DependentUpon>Frm_StokGoruntule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_StokIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_StokIslemleri.Designer.cs">
+      <DependentUpon>Frm_StokIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_UrunKarti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_UrunKarti.Designer.cs">
+      <DependentUpon>Frm_UrunKarti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_TedarikciListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_TedarikciListesi.Designer.cs">
+      <DependentUpon>Frm_TedarikciListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IletiGonderme.cs" />
+    <Compile Include="Kullanici.cs" />
+    <Compile Include="SqlBaglanti.cs" />
+    <Compile Include="Frm_Giris.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Giris.Designer.cs">
+      <DependentUpon>Frm_Giris.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_KayıtOl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_KayıtOl.Designer.cs">
+      <DependentUpon>Frm_KayıtOl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_SifremiUnuttum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_SifremiUnuttum.Designer.cs">
+      <DependentUpon>Frm_SifremiUnuttum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Frm_Acilis.resx">
+      <DependentUpon>Frm_Acilis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_AdminGiris.resx">
+      <DependentUpon>Frm_AdminGiris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_AdminPanel.resx">
+      <DependentUpon>Frm_AdminPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_AnaSayfa.resx">
+      <DependentUpon>Frm_AnaSayfa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_BilgiGuncelle.resx">
+      <DependentUpon>Frm_BilgiGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Giris.resx">
+      <DependentUpon>Frm_Giris.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Hakkimizda.resx">
+      <DependentUpon>Frm_Hakkimizda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_HataGonderimi.resx">
+      <DependentUpon>Frm_HataGonderimi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_HesabımıSil.resx">
+      <DependentUpon>Frm_HesabımıSil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_KayıtOl.resx">
+      <DependentUpon>Frm_KayıtOl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_KullaniciSil.resx">
+      <DependentUpon>Frm_KullaniciSil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_OneriOku.resx">
+      <DependentUpon>Frm_OneriOku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Rapor.resx">
+      <DependentUpon>Frm_Rapor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_SifremiUnuttum.resx">
+      <DependentUpon>Frm_SifremiUnuttum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_SikayetOku.resx">
+      <DependentUpon>Frm_SikayetOku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Sozlesme.resx">
+      <DependentUpon>Frm_Sozlesme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_StokGoruntule.resx">
+      <DependentUpon>Frm_StokGoruntule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_StokIslemleri.resx">
+      <DependentUpon>Frm_StokIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_UrunKarti.resx">
+      <DependentUpon>Frm_UrunKarti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_TedarikciListesi.resx">
+      <DependentUpon>Frm_TedarikciListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kargo-araci.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kapali-kilit.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sifre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\acikKilit.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mektup.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kapama-ikonu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bug-report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\geri%28turuncu%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\geri.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-back-67 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-1206800961-612x612.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hideP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\showP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admingiris1.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admingiris2.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kapatTuruncu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\geriTuruncu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kayitArka.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ted_list.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kullanicisil.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Adsız.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sikayet oku.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kart.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sil_arkaplan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stokgoruntukle.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\geriMavi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\islem_arkaplan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kapatMavi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\admin arkaplan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anasayfa.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

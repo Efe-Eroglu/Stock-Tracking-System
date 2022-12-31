@@ -1,0 +1,15 @@
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\bin\Debug\Frm_Giris.exe.config
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\bin\Debug\Frm_Giris.exe
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\bin\Debug\Frm_Giris.pdb
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.Properties.Resources.resources
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.csproj.GenerateResource.cache
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.csproj.CoreCompileInputs.cache
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.exe
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.pdb
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.Frm_KayıtOl.resources
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.Frm_Giris.resources
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.Frm_SifremiUnuttum.resources
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.Frm_AnaSayfa.resources
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.Frm_HataGonderimi.resources
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.csproj.AssemblyReference.cache
+C:\Users\Efe\source\repos\StokKontrolSistemi\Frm_Giris\obj\Debug\Frm_Giris.Frm_Acilis.resources
