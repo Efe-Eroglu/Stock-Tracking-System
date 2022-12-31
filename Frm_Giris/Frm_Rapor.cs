@@ -35,7 +35,8 @@ namespace Frm_Giris
         DataSet1TableAdapters.DataTable4TableAdapter ds = new DataSet1TableAdapters.DataTable4TableAdapter();
         private void Frm_Rapor_Load(object sender, EventArgs e)
         {
-
+            
+            dataGridView1.AllowUserToResizeRows = false;
             DateTime time = DateTime.Now;
             dtp_baslangic.Text = time.ToShortDateString();
             dtp_bitis.Text = time.ToShortDateString();

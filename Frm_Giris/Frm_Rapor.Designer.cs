@@ -117,6 +117,7 @@ namespace Frm_Giris
             this.dataGridView1.Size = new System.Drawing.Size(772, 542);
             this.dataGridView1.TabIndex = 27;
             this.dataGridView1.TabStop = false;
+            //this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // btn_kapat
             // 
