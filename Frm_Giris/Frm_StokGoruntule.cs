@@ -20,6 +20,7 @@ namespace Frm_Giris
         public int id_aktarim;
         SqlBaglanti bgl = new SqlBaglanti();
         private void Frm_StokGoruntule_Load(object sender, EventArgs e) {
+            dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.DataSource = ds.Filtreleme(txt_filtre.Text, (short)id_aktarim);
             gridIslemleri();
         }

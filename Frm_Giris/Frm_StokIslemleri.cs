@@ -25,6 +25,7 @@ namespace Frm_Giris
         public string zaman;
         private void Frm_StokIslemleri_Load(object sender, EventArgs e)
         {
+            dataGridView1.AllowUserToResizeRows = false;
             zaman = time.Year+"-"+time.Month + "-" + time.Day;
             dataGridView1.DataSource = ds.UrunMiktarlari((short)id_aktarim);
             gridIslemleri();

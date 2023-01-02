@@ -44,6 +44,7 @@ namespace Frm_Giris
 
         private void Frm_TedarikciListesi_Load(object sender, EventArgs e)
         {
+            dataGridView1.AllowUserToResizeRows = false;
             listele();
             gridIslemleri();
             dataGridView1.Columns["Id"].Width = 80;
