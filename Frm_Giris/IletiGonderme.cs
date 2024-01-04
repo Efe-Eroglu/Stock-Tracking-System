@@ -11,7 +11,7 @@ namespace Frm_Giris
     class IletiGonderme
     {
 
-        SqlBaglanti bgl = new SqlBaglanti();
+        SqlBaglanti bgl = SqlBaglanti.Instance;
 
         public string konu { get; set; }
         public string metin { get; set; }
@@ -28,7 +28,7 @@ namespace Frm_Giris
         {
             try
             {
-                SqlCommand komut = new SqlCommand(sqlQuery, bgl.baglanti());
+                SqlCommand komut = new SqlCommand(sqlQuery, bgl.Baglanti());
                 Kullanici kullanici = new Kullanici();
                 komut.Parameters.AddWithValue("@p1", gonderici_id);
                 komut.Parameters.AddWithValue("@p2", konu.ToUpper());
@@ -48,7 +48,7 @@ namespace Frm_Giris
             }
             finally
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
 
         }

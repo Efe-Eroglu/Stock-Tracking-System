@@ -12,7 +12,7 @@ namespace Frm_Giris
 {
     class Kullanici:Admin
     {
-        SqlBaglanti bgl = new SqlBaglanti();
+        SqlBaglanti bgl = SqlBaglanti.Instance;
 
    
         protected string telefon;
@@ -39,7 +39,7 @@ namespace Frm_Giris
             try
             {
 
-                SqlCommand komut = new SqlCommand(sqlQuery, bgl.baglanti());
+                SqlCommand komut = new SqlCommand(sqlQuery, bgl.Baglanti());
                 komut.Parameters.AddWithValue("@p1", mail);
                 komut.Parameters.AddWithValue("@p2", sifre);
                 SqlDataReader dr = komut.ExecuteReader();
@@ -80,7 +80,7 @@ namespace Frm_Giris
             }
             finally
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
 
 
@@ -89,7 +89,7 @@ namespace Frm_Giris
         public bool kayitOl()
         {
 
-            SqlCommand komut3 = new SqlCommand("SELECT KULLANICI_ID FROM Tbl_Kullanici WHERE KULLANICI_TC=@p1", bgl.baglanti());
+            SqlCommand komut3 = new SqlCommand("SELECT KULLANICI_ID FROM Tbl_Kullanici WHERE KULLANICI_TC=@p1", bgl.Baglanti());
             komut3.Parameters.AddWithValue("@p1", kimlik_numara);
             SqlDataReader dr2 = komut3.ExecuteReader();
             if (dr2.Read())
@@ -109,7 +109,7 @@ namespace Frm_Giris
                     }
                     else
                     {
-                        SqlCommand komut2 = new SqlCommand("SELECT KULLANICI_ID FROM Tbl_Kullanici WHERE KULLANICI_EPOSTA=@p1", bgl.baglanti());
+                        SqlCommand komut2 = new SqlCommand("SELECT KULLANICI_ID FROM Tbl_Kullanici WHERE KULLANICI_EPOSTA=@p1", bgl.Baglanti());
                         komut2.Parameters.AddWithValue("@p1", mail);
                         SqlDataReader dr = komut2.ExecuteReader();
                         if (dr.Read())
@@ -122,7 +122,7 @@ namespace Frm_Giris
                         {
 
                             SqlCommand komut = new SqlCommand("INSERT INTO Tbl_Kullanici (KULLANICI_ADI,KULLANICI_SOYAD,KULLANICI_SIFRE,KULLANICI_EPOSTA,KULLANICI_TC," +
-                                        "KULLANICI_TELEFON,KULLANICI_SEHIR,KULLANICI_CINSIYET) VALUES (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)", bgl.baglanti());
+                                        "KULLANICI_TELEFON,KULLANICI_SEHIR,KULLANICI_CINSIYET) VALUES (@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8)", bgl.Baglanti());
 
                             komut.Parameters.AddWithValue("@p1", ad.Trim().ToUpper());
                             komut.Parameters.AddWithValue("@p2", soyad.Trim().ToUpper());
@@ -152,7 +152,7 @@ namespace Frm_Giris
                 }
                 finally
                 {
-                    bgl.baglanti().Close();
+                    bgl.Baglanti().Close();
                 }
 
                 
@@ -163,7 +163,7 @@ namespace Frm_Giris
         {   
             try
             {
-                SqlCommand komut = new SqlCommand("DELETE Tbl_Kullanici WHERE KULLANICI_ID=" + h_id, bgl.baglanti());
+                SqlCommand komut = new SqlCommand("DELETE Tbl_Kullanici WHERE KULLANICI_ID=" + h_id, bgl.Baglanti());
                 komut.ExecuteNonQuery();
                 return true;
             }
@@ -175,7 +175,7 @@ namespace Frm_Giris
             }
             finally 
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
             
 
@@ -187,10 +187,10 @@ namespace Frm_Giris
         {
             
             MailMessage mailmsg = new MailMessage();
-            SqlBaglanti bgl = new SqlBaglanti();
+            SqlBaglanti bgl = SqlBaglanti.Instance;
             string from = "stockautomationsystem@gmail.com";
             
-                SqlCommand komut = new SqlCommand("SELECT KULLANICI_SIFRE FROM Tbl_Kullanici WHERE KULLANICI_EPOSTA=@p1", bgl.baglanti());
+                SqlCommand komut = new SqlCommand("SELECT KULLANICI_SIFRE FROM Tbl_Kullanici WHERE KULLANICI_EPOSTA=@p1", bgl.Baglanti());
                 komut.Parameters.AddWithValue("@p1", mailAdres);
                 SqlDataReader dr = komut.ExecuteReader();
                 if (dr.Read())
@@ -217,12 +217,7 @@ namespace Frm_Giris
                 {
                     MessageBox.Show("Böyle bir kullanıcı bulunamadı. Mail adresinizin doğruluğundan emin olun.", "Kullanıcı Bulunamadı", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-            
-          
-                bgl.baglanti().Close();
-            
-
+                bgl.Baglanti().Close();
         }
 
         public void bilgiGuncelle() 
@@ -230,7 +225,7 @@ namespace Frm_Giris
             try
             {
                 SqlCommand komut = new SqlCommand("UPDATE Tbl_Kullanici SET KULLANICI_ADI=@p1,KULLANICI_SOYAD=@p2,KULLANICI_SIFRE=@p3,KULLANICI_EPOSTA=@p4,KULLANICI_TC=@p5," +
-                                       "KULLANICI_TELEFON=@p6,KULLANICI_SEHIR=@p7,KULLANICI_CINSIYET=@p8 WHERE KULLANICI_ID="+id , bgl.baglanti());
+                                       "KULLANICI_TELEFON=@p6,KULLANICI_SEHIR=@p7,KULLANICI_CINSIYET=@p8 WHERE KULLANICI_ID="+id , bgl.Baglanti());
 
                 komut.Parameters.AddWithValue("@p1", ad.ToUpper().Trim());
                 komut.Parameters.AddWithValue("@p2", soyad.ToUpper().Trim());
@@ -254,18 +249,15 @@ namespace Frm_Giris
             }
             finally 
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
-            
-
-        
         }
 
         public void urunIslem(int miktar,int urun_id,char op) 
         {
             try
             {
-                SqlCommand komut = new SqlCommand("UPDATE Tbl_Urun SET URUN_MIKTAR=URUN_MIKTAR" + op +" "+miktar + " WHERE URUN_KULLANICI_ID=@p2 AND URUN_ID=@p3", bgl.baglanti());
+                SqlCommand komut = new SqlCommand("UPDATE Tbl_Urun SET URUN_MIKTAR=URUN_MIKTAR" + op +" "+miktar + " WHERE URUN_KULLANICI_ID=@p2 AND URUN_ID=@p3", bgl.Baglanti());
                 
                 komut.Parameters.AddWithValue("@p2", Id);
                 komut.Parameters.AddWithValue("@p3", urun_id);
@@ -279,7 +271,7 @@ namespace Frm_Giris
 
             finally 
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
         }
 
@@ -289,7 +281,7 @@ namespace Frm_Giris
             {
 
                 SqlCommand komut = new SqlCommand("INSERT INTO Tbl_Tedarikci(TEDARIKCI_AD,TEDARIKCI_SOYAD,TEDARIKCI_KATEGORI,TEDARIKCI_TELEFON," +
-                    "TEDARIKCI_ISLETME,TEDARIKCI_EPOSTA,KULLANICI_ID) VALUES(@p1,@p2,@p3,@p4,@p5,@p6,@p7)", bgl.baglanti());
+                    "TEDARIKCI_ISLETME,TEDARIKCI_EPOSTA,KULLANICI_ID) VALUES(@p1,@p2,@p3,@p4,@p5,@p6,@p7)", bgl.Baglanti());
                 komut.Parameters.AddWithValue("@p1", t_ad.ToUpper().Trim());
                 komut.Parameters.AddWithValue("@p2", t_soyad.ToUpper().Trim());
                 komut.Parameters.AddWithValue("@p3", t_kategori.ToUpper().Trim());
@@ -311,7 +303,7 @@ namespace Frm_Giris
             }
             finally
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
         }
         public void tedarikciSil(int t_id) 
@@ -320,7 +312,7 @@ namespace Frm_Giris
             {
                 try
                 {
-                    SqlCommand komut = new SqlCommand("DELETE FROM Tbl_Tedarikci WHERE TEDARIKCI_ID=" + t_id, bgl.baglanti());
+                    SqlCommand komut = new SqlCommand("DELETE FROM Tbl_Tedarikci WHERE TEDARIKCI_ID=" + t_id, bgl.Baglanti());
                     komut.ExecuteNonQuery();
                     MessageBox.Show("Tedarikci başarıyla silindi.", "İşlem Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -335,7 +327,7 @@ namespace Frm_Giris
                 }
                 finally
                 {
-                    bgl.baglanti().Close();
+                    bgl.Baglanti().Close();
                 }
             }
         }
@@ -346,7 +338,7 @@ namespace Frm_Giris
                 try
                 {
                     SqlCommand komut = new SqlCommand("UPDATE Tbl_Tedarikci SET TEDARIKCI_AD=@p1,TEDARIKCI_SOYAD=@p2,TEDARIKCI_KATEGORI=@p3," +
-                        "TEDARIKCI_TELEFON=@p4,TEDARIKCI_ISLETME=@p5," + "TEDARIKCI_EPOSTA=@p6 WHERE TEDARIKCI_ID=" + t_id, bgl.baglanti());
+                        "TEDARIKCI_TELEFON=@p4,TEDARIKCI_ISLETME=@p5," + "TEDARIKCI_EPOSTA=@p6 WHERE TEDARIKCI_ID=" + t_id, bgl.Baglanti());
                     komut.Parameters.AddWithValue("@p1", t_ad.Trim().ToUpper());
                     komut.Parameters.AddWithValue("@p2", t_soyad.ToUpper().Trim());
                     komut.Parameters.AddWithValue("@p3", t_kategori.Trim().ToUpper());
@@ -367,7 +359,7 @@ namespace Frm_Giris
                 }
                 finally
                 {
-                    bgl.baglanti().Close();
+                    bgl.Baglanti().Close();
                 }
 
             }

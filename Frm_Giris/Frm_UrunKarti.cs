@@ -21,7 +21,7 @@ namespace Frm_Giris
         public int t_id;
 
 
-        SqlBaglanti bgl = new SqlBaglanti();
+        SqlBaglanti bgl = SqlBaglanti.Instance;
         private void btn_geri_Click(object sender, EventArgs e)
         {
             Frm_AnaSayfa anasayfa = new Frm_AnaSayfa();
@@ -51,7 +51,7 @@ namespace Frm_Giris
         {
             try
             {
-                SqlCommand komut = new SqlCommand("SELECT TEDARIKCI_ISLETME FROM Tbl_Tedarikci WHERE KULLANICI_ID="+id_aktarim, bgl.baglanti());
+                SqlCommand komut = new SqlCommand("SELECT TEDARIKCI_ISLETME FROM Tbl_Tedarikci WHERE KULLANICI_ID="+id_aktarim, bgl.Baglanti());
                 SqlDataReader dr = komut.ExecuteReader();
                 while (dr.Read())
                 {
@@ -63,7 +63,7 @@ namespace Frm_Giris
 
                 MessageBox.Show("Bir hata oluştu lütfen daha sonra tekrar deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-            finally { bgl.baglanti().Close(); }
+            finally { bgl.Baglanti().Close(); }
 
 
 
@@ -75,7 +75,7 @@ namespace Frm_Giris
             try
             {
                 string isletme = txt_tedarikci.Text;
-                SqlCommand komut = new SqlCommand("SELECT TEDARIKCI_KATEGORI,TEDARIKCI_ID FROM Tbl_Tedarikci WHERE TEDARIKCI_ISLETME='" + isletme + "'", bgl.baglanti());
+                SqlCommand komut = new SqlCommand("SELECT TEDARIKCI_KATEGORI,TEDARIKCI_ID FROM Tbl_Tedarikci WHERE TEDARIKCI_ISLETME='" + isletme + "'", bgl.Baglanti());
                 SqlDataReader dr = komut.ExecuteReader();
                 if (dr.Read())
                 {
@@ -88,7 +88,7 @@ namespace Frm_Giris
 
                 MessageBox.Show("Bir hata oluştu lütfen daha sonra tekrar deneyin.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-            finally { bgl.baglanti().Close(); }
+            finally { bgl.Baglanti().Close(); }
 
 
         }
@@ -109,7 +109,7 @@ namespace Frm_Giris
             {
                 if (txt_urunAd.Text != "" & txt_marka.Text != "" & txt_tedarikci.Text != "")
                 {
-                    SqlCommand komut = new SqlCommand("INSERT INTO Tbl_Urun(URUN_AD,URUN_KATEGORİ,URUN_MARKA,URUN_TEDARİKCİ_ID,URUN_KULLANICI_ID,URUN_MIKTAR) VALUES(@p1,@p2,@p3,@p4,@p5,0)", bgl.baglanti());
+                    SqlCommand komut = new SqlCommand("INSERT INTO Tbl_Urun(URUN_AD,URUN_KATEGORİ,URUN_MARKA,URUN_TEDARİKCİ_ID,URUN_KULLANICI_ID,URUN_MIKTAR) VALUES(@p1,@p2,@p3,@p4,@p5,0)", bgl.Baglanti());
                     komut.Parameters.AddWithValue("@p1", txt_urunAd.Text.Trim().ToUpper());
                     komut.Parameters.AddWithValue("@p2", txt_kategori.Text.Trim().ToUpper());
                     komut.Parameters.AddWithValue("@p3", txt_marka.Text.Trim().ToUpper());
@@ -129,7 +129,7 @@ namespace Frm_Giris
             {
                 MessageBox.Show("Bir hata alındı lütfen daha sonra tekrar deneyin.","Hata",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-            finally { bgl.baglanti().Close(); }
+            finally { bgl.Baglanti().Close(); }
             
         }
     }

@@ -18,7 +18,7 @@ namespace Frm_Giris
             InitializeComponent();
         }
         public int id_aktarim;
-        SqlBaglanti bgl = new SqlBaglanti();
+        SqlBaglanti bgl = SqlBaglanti.Instance;
         private void btn_kapat_Click(object sender, EventArgs e)
         {
 

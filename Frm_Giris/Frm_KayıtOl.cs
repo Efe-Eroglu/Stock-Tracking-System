@@ -18,7 +18,7 @@ namespace Frm_Giris
             InitializeComponent();
         }
 
-        SqlBaglanti bgl = new SqlBaglanti();
+        SqlBaglanti bgl = SqlBaglanti.Instance;
 
 
         private void Frm_KayıtOl_Load(object sender, EventArgs e)

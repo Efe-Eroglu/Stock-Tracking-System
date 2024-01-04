@@ -13,7 +13,7 @@ namespace Frm_Giris
 {
     public partial class Frm_TedarikciListesi : Form
     {
-        SqlBaglanti bgl = new SqlBaglanti();
+        SqlBaglanti bgl = SqlBaglanti.Instance;
         public Frm_TedarikciListesi()
         {
             InitializeComponent();
@@ -55,12 +55,12 @@ namespace Frm_Giris
         void listele() 
         {
             SqlDataAdapter da = new SqlDataAdapter("SELECT TEDARIKCI_ID AS Id ,TEDARIKCI_AD AS İsim ,TEDARIKCI_SOYAD AS Soyisim, TEDARIKCI_KATEGORI AS Kategori" +
-                " ,TEDARIKCI_ISLETME AS İşletme,TEDARIKCI_EPOSTA AS Mail ,TEDARIKCI_TELEFON AS Telefon FROM Tbl_Tedarikci WHERE KULLANICI_ID ="+id_aktarim,bgl.baglanti());
+                " ,TEDARIKCI_ISLETME AS İşletme,TEDARIKCI_EPOSTA AS Mail ,TEDARIKCI_TELEFON AS Telefon FROM Tbl_Tedarikci WHERE KULLANICI_ID ="+id_aktarim,bgl.Baglanti());
 
             DataSet ds = new DataSet();
             da.Fill(ds);
             dataGridView1.DataSource = ds.Tables[0];
-            bgl.baglanti().Close();
+            bgl.Baglanti().Close();
             txt_Ad.Clear();
             txt_isletme.Clear();
             txt_kategori.Clear();

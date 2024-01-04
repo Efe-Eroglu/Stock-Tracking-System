@@ -11,7 +11,7 @@ namespace Frm_Giris
     class Admin
     {
 
-        SqlBaglanti bgl = new SqlBaglanti();
+        SqlBaglanti bgl = SqlBaglanti.Instance;
 
         protected int id;
         protected string ad;
@@ -31,7 +31,7 @@ namespace Frm_Giris
             try
             {
 
-                SqlCommand komut = new SqlCommand(sqlQuery, bgl.baglanti());
+                SqlCommand komut = new SqlCommand(sqlQuery, bgl.Baglanti());
                 komut.Parameters.AddWithValue("@p1", mail);
                 komut.Parameters.AddWithValue("@p2", sifre);
                 SqlDataReader dr = komut.ExecuteReader();
@@ -66,7 +66,7 @@ namespace Frm_Giris
             }
             finally
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
         }
 
@@ -74,7 +74,7 @@ namespace Frm_Giris
         {
             try
             {
-                SqlCommand komut = new SqlCommand("DELETE FROM Tbl_Kullanici WHERE KULLANICI_ID=" + k_id, bgl.baglanti());
+                SqlCommand komut = new SqlCommand("DELETE FROM Tbl_Kullanici WHERE KULLANICI_ID=" + k_id, bgl.Baglanti());
                 komut.ExecuteNonQuery();
                 MessageBox.Show("Kullanıcı başarıyla silindi", "İşlem Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -88,7 +88,7 @@ namespace Frm_Giris
             }
             finally
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
 
 

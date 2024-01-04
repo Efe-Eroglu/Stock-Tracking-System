@@ -17,7 +17,7 @@ namespace Frm_Giris
         {
             InitializeComponent();
         }
-        SqlBaglanti bgl = new SqlBaglanti();
+        SqlBaglanti bgl = SqlBaglanti.Instance;
         public int id_aktarim;
         public string secim="";
 
@@ -106,7 +106,7 @@ namespace Frm_Giris
             try
             {
 
-                SqlCommand komut = new SqlCommand("INSERT INTO Tbl_Islem(ISLEM_TUR,ISLEM_MIKTAR,ISLEM_URUN_ID,KULLANICI_ID,ISLEM_TARIH) VALUES(@p1,@p2,@p3,@p4,@p5)", bgl.baglanti());
+                SqlCommand komut = new SqlCommand("INSERT INTO Tbl_Islem(ISLEM_TUR,ISLEM_MIKTAR,ISLEM_URUN_ID,KULLANICI_ID,ISLEM_TARIH) VALUES(@p1,@p2,@p3,@p4,@p5)", bgl.Baglanti());
                 komut.Parameters.AddWithValue("@p2", txt_miktar.Text);
                 komut.Parameters.AddWithValue("@p3", urun_id.Text);
                 komut.Parameters.AddWithValue("@p1", secim.ToUpper().Trim());
@@ -120,7 +120,7 @@ namespace Frm_Giris
             }
             finally
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
 
 
@@ -150,7 +150,7 @@ namespace Frm_Giris
             {
                 if (urun_id.Text != "")
                 {
-                    SqlCommand komut = new SqlCommand("DELETE Tbl_Urun WHERE URUN_ID=@p1 AND URUN_KULLANICI_ID = @p2", bgl.baglanti());
+                    SqlCommand komut = new SqlCommand("DELETE Tbl_Urun WHERE URUN_ID=@p1 AND URUN_KULLANICI_ID = @p2", bgl.Baglanti());
                     komut.Parameters.AddWithValue("@p1", urun_id.Text);
                     komut.Parameters.AddWithValue("@p2", id_aktarim);
                     komut.ExecuteNonQuery();
@@ -169,7 +169,7 @@ namespace Frm_Giris
             }
             finally 
             {
-                bgl.baglanti().Close();
+                bgl.Baglanti().Close();
             }
             
 
