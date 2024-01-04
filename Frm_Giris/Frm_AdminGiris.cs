@@ -36,11 +36,16 @@ namespace Frm_Giris
             {
                 this.Close();
             }
+            //var admin = new AdminBuilder()
+            //    .SetMail("admin@example.com")
+            //    .SetSifre("123456")
+            //    .Build();
 
-            
+            //bool girisBasarili = admin.GirisYap();
+
         }
-        
-        
+
+
         #region Texboxlar İçin Eventler
         void txtSifreEventi()
         {

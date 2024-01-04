@@ -109,21 +109,21 @@ namespace Frm_Giris
         
         private void btn_ekle_Click(object sender, EventArgs e)
         {
-            kullanici.Id = id_aktarim;
+            kullanici.KullaniciId = id_aktarim;
             kullanici.tedarikciEkle(txt_Ad.Text,txt_soyad.Text, txt_mail.Text, txt_telefon.Text, txt_kategori.Text, txt_isletme.Text);
             listele();
         }
         private void btn_sil_Click(object sender, EventArgs e)
         {
             
-            kullanici.Id = id_aktarim;
+            kullanici.KullaniciId = id_aktarim;
             kullanici.tedarikciSil(Convert.ToInt32(lblId.Text));
             listele();
 
         }
         private void btn_guncelle_Click(object sender, EventArgs e)
         {
-            kullanici.Id = id_aktarim;
+            kullanici.KullaniciId = id_aktarim;
             kullanici.tedarikciGuncelle(Convert.ToInt32(lblId.Text), txt_Ad.Text,txt_soyad.Text, txt_mail.Text, txt_telefon.Text, txt_kategori.Text, txt_isletme.Text);
             listele();
 

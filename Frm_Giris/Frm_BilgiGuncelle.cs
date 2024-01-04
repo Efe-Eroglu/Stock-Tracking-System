@@ -114,7 +114,7 @@ namespace Frm_Giris
         private void btn_guncelle_Click(object sender, EventArgs e)
         {
             Kullanici kullanici = new Kullanici(txtAd.Text, txtSoyad.Text, txtSifre.Text, txtEposta.Text, msktxtTelefon.Text, cmbSehir.Text, cmbCinsiyet.Text, txtTc.Text);
-            kullanici.Id = id_aktarim;
+            kullanici.KullaniciId = id_aktarim;
             kullanici.bilgiGuncelle();
         }
 

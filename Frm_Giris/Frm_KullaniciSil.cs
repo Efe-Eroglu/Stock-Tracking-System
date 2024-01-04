@@ -160,7 +160,7 @@ namespace Frm_Giris
         private void btn_sil_Click(object sender, EventArgs e)
         {
             Admin admin = new Admin();
-            admin.kullaniciSil(Convert.ToInt32(txt_id.Text));
+            admin.KullaniciSil(Convert.ToInt32(txt_id.Text));
             Listele();
         }
 

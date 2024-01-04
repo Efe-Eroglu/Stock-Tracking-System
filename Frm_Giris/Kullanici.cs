@@ -10,30 +10,34 @@ using System.Windows.Forms;
 
 namespace Frm_Giris
 {
-    class Kullanici:Admin
+    class Kullanici : Admin
     {
         SqlBaglanti bgl = SqlBaglanti.Instance;
 
-   
-        protected string telefon;
-        private string sehir;
-        private string cinsiyet;
-        private string kimlik_numara;
 
-        public int Id { get { return id; } set { id = value; } }
-        
+        public string telefon;
+        public string sehir;
+        public string cinsiyet;
+        public string kimlik_numara;
+        public string ad;
+        public string soyad;
+        public string sifre;
+        public string mail;
+
+        public int KullaniciId { get; set; }
+
 
         public Kullanici()
         {
 
         }
-        
-        public Kullanici(string ad,string soyad,string sifre,string mail,string telefon,string sehir,string cinsiyet,string kimlik_numara)
+
+        public Kullanici(string ad, string soyad, string sifre, string mail, string telefon, string sehir, string cinsiyet, string kimlik_numara)
         {
-            this.ad = ad; this.soyad = soyad; this.sifre = sifre; this.mail = mail; this.telefon = telefon; this.sehir = sehir; this.cinsiyet = cinsiyet;this.kimlik_numara = kimlik_numara;
+            this.ad = ad; this.soyad = soyad; this.sifre = sifre; this.mail = mail; this.telefon = telefon; this.sehir = sehir; this.cinsiyet = cinsiyet; this.kimlik_numara = kimlik_numara;
         }
-      
-        public override bool girisYap(string mail,string sifre)
+
+        public override bool girisYap(string mail, string sifre)
         {
             string sqlQuery = "SELECT * FROM Tbl_Kullanici WHERE KULLANICI_EPOSTA=@p1 AND KULLANICI_SIFRE=@p2";
             try
@@ -46,7 +50,7 @@ namespace Frm_Giris
 
                 if (dr.Read())
                 {
-                    id = Convert.ToInt32(dr["KULLANICI_ID"]);
+                    KullaniciId = Convert.ToInt32(dr["KULLANICI_ID"]);
                     ad = dr["KULLANICI_ADI"].ToString();
                     soyad = dr["KULLANICI_SOYAD"].ToString();
                     cinsiyet = dr["KULLANICI_CINSIYET"].ToString();
@@ -70,7 +74,7 @@ namespace Frm_Giris
             catch (SqlException)
             {
                 MessageBox.Show("Sunuculara ulaşmakta zorluk çekiyoruz lütfen tekrar deneyin.", "Sunucu Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //HATANIN SEBEBİ SQLBAGLANTI CLASS INDAKI VERİ TABANI YOLUNUN GİRİLMEMİŞ OLMASI OLABİLİR
+
                 return false;
             }
             catch (Exception)
@@ -137,7 +141,7 @@ namespace Frm_Giris
                             return true;
 
                         }
-                        
+
                     }
                 }
                 catch (SqlException)
@@ -145,7 +149,7 @@ namespace Frm_Giris
                     MessageBox.Show("Sunuculara ulaşmakta güçlük çekiyoruz lütfen tekrar deneyiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                catch (Exception) 
+                catch (Exception)
                 {
                     MessageBox.Show("Kayıt işlemi yapılırken bir hata ile karşılaşıldı lütfen daha sonra tekrar deneyiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
@@ -155,12 +159,12 @@ namespace Frm_Giris
                     bgl.Baglanti().Close();
                 }
 
-                
+
             }
         }
 
         public bool hesabımıKapat(int h_id)
-        {   
+        {
             try
             {
                 SqlCommand komut = new SqlCommand("DELETE Tbl_Kullanici WHERE KULLANICI_ID=" + h_id, bgl.Baglanti());
@@ -169,63 +173,63 @@ namespace Frm_Giris
             }
             catch (Exception)
             {
-                
+
                 MessageBox.Show("Hesabınız silinirken bir hata oluştu hesabınız silinemedi.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            finally 
+            finally
             {
                 bgl.Baglanti().Close();
             }
-            
 
-           
+
+
 
         }
 
         public void mailAt(string mailAdres)
         {
-            
+
             MailMessage mailmsg = new MailMessage();
             SqlBaglanti bgl = SqlBaglanti.Instance;
             string from = "stockautomationsystem@gmail.com";
-            
-                SqlCommand komut = new SqlCommand("SELECT KULLANICI_SIFRE FROM Tbl_Kullanici WHERE KULLANICI_EPOSTA=@p1", bgl.Baglanti());
-                komut.Parameters.AddWithValue("@p1", mailAdres);
-                SqlDataReader dr = komut.ExecuteReader();
-                if (dr.Read())
-                {
-                    sifre = dr["KULLANICI_SIFRE"].ToString();
-                }
-                if (sifre != null)
-                {
-                    mailmsg.To.Add(mailAdres);
-                    mailmsg.Body = "Şifrenizi unuttuğunuzu belirttiniz, şifrenizi bu gönderinin altında bulabilir ve uygulamamızı kullanmaya devam edebilirsiniz. \n\n\n Şifreniz --> " + sifre;
+
+            SqlCommand komut = new SqlCommand("SELECT KULLANICI_SIFRE FROM Tbl_Kullanici WHERE KULLANICI_EPOSTA=@p1", bgl.Baglanti());
+            komut.Parameters.AddWithValue("@p1", mailAdres);
+            SqlDataReader dr = komut.ExecuteReader();
+            if (dr.Read())
+            {
+                sifre = dr["KULLANICI_SIFRE"].ToString();
+            }
+            if (sifre != null)
+            {
+                mailmsg.To.Add(mailAdres);
+                mailmsg.Body = "Şifrenizi unuttuğunuzu belirttiniz, şifrenizi bu gönderinin altında bulabilir ve uygulamamızı kullanmaya devam edebilirsiniz. \n\n\n Şifreniz --> " + sifre;
 
 
-                    SmtpClient istemci = new SmtpClient("smtp.gmail.com", 587);
-                    istemci.DeliveryMethod = SmtpDeliveryMethod.Network;
+                SmtpClient istemci = new SmtpClient("smtp.gmail.com", 587);
+                istemci.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                    mailmsg.From = new MailAddress(from);
-                    mailmsg.Subject = "Şifre Hatırlatma İsteği";
-                    istemci.EnableSsl = true;
-                    istemci.Credentials = new NetworkCredential(from, "xshrtivkyumlbsbz");
-                    istemci.Send(mailmsg);
-                    MessageBox.Show("Şifreniz mail adresinize gönderildi.", "Mail gönderildi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Böyle bir kullanıcı bulunamadı. Mail adresinizin doğruluğundan emin olun.", "Kullanıcı Bulunamadı", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                bgl.Baglanti().Close();
+                mailmsg.From = new MailAddress(from);
+                mailmsg.Subject = "Şifre Hatırlatma İsteği";
+                istemci.EnableSsl = true;
+                istemci.Credentials = new NetworkCredential(from, "xshrtivkyumlbsbz");
+                istemci.Send(mailmsg);
+                MessageBox.Show("Şifreniz mail adresinize gönderildi.", "Mail gönderildi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Böyle bir kullanıcı bulunamadı. Mail adresinizin doğruluğundan emin olun.", "Kullanıcı Bulunamadı", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            bgl.Baglanti().Close();
         }
 
-        public void bilgiGuncelle() 
+        public void bilgiGuncelle()
         {
             try
             {
                 SqlCommand komut = new SqlCommand("UPDATE Tbl_Kullanici SET KULLANICI_ADI=@p1,KULLANICI_SOYAD=@p2,KULLANICI_SIFRE=@p3,KULLANICI_EPOSTA=@p4,KULLANICI_TC=@p5," +
-                                       "KULLANICI_TELEFON=@p6,KULLANICI_SEHIR=@p7,KULLANICI_CINSIYET=@p8 WHERE KULLANICI_ID="+id , bgl.Baglanti());
+                                       "KULLANICI_TELEFON=@p6,KULLANICI_SEHIR=@p7,KULLANICI_CINSIYET=@p8 WHERE KULLANICI_ID=" + id, bgl.Baglanti());
 
                 komut.Parameters.AddWithValue("@p1", ad.ToUpper().Trim());
                 komut.Parameters.AddWithValue("@p2", soyad.ToUpper().Trim());
@@ -236,8 +240,8 @@ namespace Frm_Giris
                 komut.Parameters.AddWithValue("@p7", sehir.ToUpper().Trim());
                 komut.Parameters.AddWithValue("@p8", cinsiyet.ToUpper().Trim());
                 komut.ExecuteNonQuery();
-                
-                MessageBox.Show("Bilgileriniz başarıyla güncellendi.","Başarılı",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                MessageBox.Show("Bilgileriniz başarıyla güncellendi.", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlException)
             {
@@ -247,19 +251,19 @@ namespace Frm_Giris
             {
                 MessageBox.Show("Kayıt işlemi yapılırken bir hata ile karşılaşıldı lütfen daha sonra tekrar deneyiniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            finally 
+            finally
             {
                 bgl.Baglanti().Close();
             }
         }
 
-        public void urunIslem(int miktar,int urun_id,char op) 
+        public void urunIslem(int miktar, int urun_id, char op)
         {
             try
             {
-                SqlCommand komut = new SqlCommand("UPDATE Tbl_Urun SET URUN_MIKTAR=URUN_MIKTAR" + op +" "+miktar + " WHERE URUN_KULLANICI_ID=@p2 AND URUN_ID=@p3", bgl.Baglanti());
-                
-                komut.Parameters.AddWithValue("@p2", Id);
+                SqlCommand komut = new SqlCommand("UPDATE Tbl_Urun SET URUN_MIKTAR=URUN_MIKTAR" + op + " " + miktar + " WHERE URUN_KULLANICI_ID=@p2 AND URUN_ID=@p3", bgl.Baglanti());
+
+                komut.Parameters.AddWithValue("@p2", id);
                 komut.Parameters.AddWithValue("@p3", urun_id);
                 komut.ExecuteNonQuery();
                 MessageBox.Show("İşleminiz başarıyla gerçekleştirildi.", "İşlem başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -269,13 +273,13 @@ namespace Frm_Giris
                 MessageBox.Show("İşleminiz sırasında bir hata ile karşılaşıldı", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            finally 
+            finally
             {
                 bgl.Baglanti().Close();
             }
         }
 
-        public void tedarikciEkle(string t_ad, string t_soyad, string t_mail, string t_telefon, string t_kategori, string t_isletme) 
+        public void tedarikciEkle(string t_ad, string t_soyad, string t_mail, string t_telefon, string t_kategori, string t_isletme)
         {
             try
             {
@@ -306,7 +310,7 @@ namespace Frm_Giris
                 bgl.Baglanti().Close();
             }
         }
-        public void tedarikciSil(int t_id) 
+        public void tedarikciSil(int t_id)
         {
 
             {
@@ -331,7 +335,7 @@ namespace Frm_Giris
                 }
             }
         }
-        public void tedarikciGuncelle(int t_id, string t_ad, string t_soyad, string t_mail, string t_telefon, string t_kategori, string t_isletme) 
+        public void tedarikciGuncelle(int t_id, string t_ad, string t_soyad, string t_mail, string t_telefon, string t_kategori, string t_isletme)
         {
 
             {
@@ -364,6 +368,8 @@ namespace Frm_Giris
 
             }
         }
-        
+
     }
+
 }
+

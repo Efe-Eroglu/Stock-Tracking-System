@@ -65,7 +65,7 @@ namespace Frm_Giris
                 if (txt_islem.SelectedIndex == 0)
                 {
                     secim = "Giriş";
-                    kullanici.Id = id_aktarim;
+                    kullanici.KullaniciId = id_aktarim;
                     kullanici.urunIslem(Convert.ToInt32(txt_miktar.Text), Convert.ToInt32(urun_id.Text),'+');
                     islemKayit();
                     temizle();
@@ -75,7 +75,7 @@ namespace Frm_Giris
                     if (Convert.ToInt32(urunMiktari.Text) - Convert.ToInt32(txt_miktar.Text) >= 0)
                     {
                         secim = "Çıkış";
-                        kullanici.Id = id_aktarim;
+                        kullanici.KullaniciId = id_aktarim;
                         kullanici.urunIslem(Convert.ToInt32(txt_miktar.Text), Convert.ToInt32(urun_id.Text), '-');
                         islemKayit();
                         temizle();
