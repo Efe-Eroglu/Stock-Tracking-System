@@ -40,12 +40,10 @@ namespace Frm_Giris
 
             IletiGonderme ileti = new IletiGonderme(txtKonu.Text, txtHataMetin.Text, gonderici_id);
 
-
             if (cmbTercih.Text == "Hata Bildirimi")
             {
-                sqlQuery = "INSERT INTO Tbl_Sikayet(GONDERICI_ID,SIKAYET_BASLIK,SIKAYET_METIN) VALUES (@p1,@p2,@p3)";
-                mesaj = "Hata bildiriniz başarılı bir şekilde iletildi görüşleriniz için teşekkürler.";
-                ileti.bildiriGonder(sqlQuery, mesaj);
+                ileti.SetBildiriGondermeStrategy(new NormalBildiriGondermeStrategy());
+                ileti.Gonder();
             }
             else if (cmbTercih.Text == "")
             {
@@ -54,9 +52,8 @@ namespace Frm_Giris
             }
             else
             {
-                sqlQuery = "INSERT INTO Tbl_Oneri(GONDERICI_ID,ONERI_BASLIK,ONERI_METIN) VALUES (@p1,@p2,@p3)";
-                mesaj = "Öneri bildiriniz başarılı bir şekilde iletildi görüşleriniz için teşekkürler.";
-                ileti.bildiriGonder(sqlQuery, mesaj);
+                ileti.SetBildiriGondermeStrategy(new OncelikliBildiriGondermeStrategy());
+                ileti.Gonder();
             }
 
 
